@@ -17,7 +17,16 @@
         packages = {
           default = pkgs.vimUtils.buildVimPlugin {
             name = "TheAltF4Stream";
-            src = ./lua;
+            postInstall = ''
+              rm -rf $out/.gitignore
+              rm -rf $out/LICENSE
+              rm -rf $out/README.md
+              rm -rf $out/flake.lock
+              rm -rf $out/flake.nix
+              rm -rf $out/justfile
+              rm -rf $out/.envrc
+            '';
+            src = ./.;
           };
         };
       };
