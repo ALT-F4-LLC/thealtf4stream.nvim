@@ -8,8 +8,14 @@
       systems = [ "aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux" ];
 
       perSystem = { config, self', inputs', pkgs, system, ... }: {
+        devShells = {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [ just ];
+          };
+        };
+
         packages = {
-          thealtf4stream-nvim = pkgs.vimUtils.buildVimPlugin {
+          default = pkgs.vimUtils.buildVimPlugin {
             name = "TheAltF4Stream";
             src = ./lua;
           };
