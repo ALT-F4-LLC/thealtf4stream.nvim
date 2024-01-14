@@ -98,7 +98,22 @@ rec {
       terraform
     ];
 
-  mkNvim = { system }:
+  mkNvimExec = { system }:
+    let
+      neovim = mkNvimFull { inherit system; };
+      neovimRuntimeInputs = mkNvimRuntimeInputs { inherit system; };
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+    in
+    pkgs.writeShellApplication
+      {
+        runtimeInputs = [ neovim ] ++ neovimRuntimeInputs;
+        name = "nvim";
+        text = ''
+          ${neovim}/bin/nvim "$@"
+        '';
+      };
+
+  mkNvimFull = { system }:
     let
       pkgs = inputs.nixpkgs.legacyPackages.${system};
     in
@@ -122,4 +137,17 @@ rec {
       withPython3 = true;
       withRuby = true;
     };
+
+  mkNvim = { system }:
+    let
+      neovim = mkNvimFull { inherit system; };
+      neovimExec = mkNvimExec { inherit system; };
+    in
+    neovim.overrideAttrs (oldAttrs: {
+      installPhase = ''
+        mkdir -p $out/bin
+        cp ${neovimExec}/bin/nvim $out/bin/nvim
+      '';
+    });
 }
+
