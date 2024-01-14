@@ -1,11 +1,16 @@
 { inputs }:
 
+let
+  inherit (inputs.nixpkgs) legacyPackages;
+in
 rec {
-  mkNvimPlugin = { system }:
+  mkVimPlugin = { system }:
     let
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      inherit (pkgs) vimUtils;
+      inherit (vimUtils) buildVimPlugin;
+      pkgs = legacyPackages.${system};
     in
-    pkgs.vimUtils.buildVimPlugin {
+    buildVimPlugin {
       name = "TheAltF4Stream";
       postInstall = ''
         rm -rf $out/.envrc
@@ -20,49 +25,13 @@ rec {
       src = ../.;
     };
 
-  mkNvimPackages = { system }:
+  mkNeovimPlugins = { system }:
     let
-      pkgs = (import inputs.nixpkgs {
-        inherit system; config.allowUnfree = true;
-      });
+      inherit (pkgs) vimPlugins;
+      pkgs = legacyPackages.${system};
+      thealtf4stream-nvim = mkVimPlugin { inherit system; };
     in
-    with pkgs; [
-      # language servers
-      cuelsp
-      gopls
-      haskell-language-server
-      jsonnet-language-server
-      lua-language-server
-      nil
-      nodePackages."bash-language-server"
-      nodePackages."diagnostic-languageserver"
-      nodePackages."dockerfile-language-server-nodejs"
-      nodePackages."pyright"
-      nodePackages."typescript"
-      nodePackages."typescript-language-server"
-      nodePackages."vscode-langservers-extracted"
-      nodePackages."yaml-language-server"
-      ocaml-ng.ocamlPackages_5_1.ocaml-lsp
-      ocaml-ng.ocamlPackages_5_1.ocamlformat
-      omnisharp-roslyn
-      rust-analyzer
-      terraform-ls
-
-      # formatters
-      nixpkgs-fmt
-      gofumpt
-      golines
-      python310Packages.black
-      rustfmt
-      terraform
-    ];
-
-  mkNvimPlugins = { system }:
-    let
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-      thealtf4stream-nvim = mkNvimPlugin { inherit system; };
-    in
-    with pkgs; [
+    [
       # languages
       vimPlugins.nvim-lspconfig
       vimPlugins.nvim-treesitter.withAllGrammars
@@ -97,39 +66,75 @@ rec {
       thealtf4stream-nvim
     ];
 
-  mkNvim = { system }:
+  mkExtraPackages = { system }:
     let
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-      extraPackages = mkNvimPackages { inherit system; };
+      inherit (pkgs) nodePackages ocaml-ng python310Packages;
+      inherit (ocaml-ng) ocamlPackages_5_1;
+      pkgs = (import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      });
     in
-    pkgs.neovim.override {
-      configure = {
-        customRC = mkNvimConfig;
-        packages.main =
-          let
-            plugins = mkNvimPlugins { inherit system; };
-          in
-          {
-            start = plugins;
-          };
-      };
-      extraMakeWrapperArgs = ''--suffix PATH : "${pkgs.lib.makeBinPath extraPackages}"'';
-      withNodeJs = true;
-      withPython3 = true;
-      withRuby = true;
-    };
+    [
+      # language servers
+      nodePackages."bash-language-server"
+      nodePackages."diagnostic-languageserver"
+      nodePackages."dockerfile-language-server-nodejs"
+      nodePackages."pyright"
+      nodePackages."typescript"
+      nodePackages."typescript-language-server"
+      nodePackages."vscode-langservers-extracted"
+      nodePackages."yaml-language-server"
+      ocamlPackages_5_1.ocaml-lsp
+      ocamlPackages_5_1.ocamlformat
+      pkgs.cuelsp
+      pkgs.gopls
+      pkgs.haskell-language-server
+      pkgs.jsonnet-language-server
+      pkgs.lua-language-server
+      pkgs.nil
+      pkgs.omnisharp-roslyn
+      pkgs.rust-analyzer
+      pkgs.terraform-ls
 
-  mkNvimConfig = ''
+      # formatters
+      pkgs.nixpkgs-fmt
+      pkgs.gofumpt
+      pkgs.golines
+      python310Packages.black
+      pkgs.rustfmt
+      pkgs.terraform
+    ];
+
+  mkExtraConfig = ''
     lua << EOF
       require 'TheAltF4Stream'.init()
     EOF
   '';
 
-  mkNvimHomeManager = { system }:
+  mkNeovim = { system }:
     let
-      extraConfig = mkNvimConfig;
-      extraPackages = mkNvimPackages { inherit system; };
-      plugins = mkNvimPlugins { inherit system; };
+      inherit (pkgs) lib neovim;
+      extraPackages = mkExtraPackages { inherit system; };
+      pkgs = legacyPackages.${system};
+      start = mkNeovimPlugins { inherit system; };
+    in
+    neovim.override {
+      configure = {
+        customRC = mkExtraConfig;
+        packages.main = { inherit start; };
+      };
+      extraMakeWrapperArgs = ''--suffix PATH : "${lib.makeBinPath extraPackages}"'';
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
+    };
+
+  mkHomeManager = { system }:
+    let
+      extraConfig = mkExtraConfig;
+      extraPackages = mkExtraPackages { inherit system; };
+      plugins = mkNeovimPlugins { inherit system; };
     in
     {
       inherit extraConfig extraPackages plugins;
