@@ -20,6 +20,43 @@ rec {
       src = ../.;
     };
 
+  mkNvimPackages = { system }:
+    let
+      pkgs = (import inputs.nixpkgs {
+        inherit system; config.allowUnfree = true;
+      });
+    in
+    with pkgs; [
+      # language servers
+      cuelsp
+      gopls
+      haskell-language-server
+      jsonnet-language-server
+      lua-language-server
+      nil
+      nodePackages."bash-language-server"
+      nodePackages."diagnostic-languageserver"
+      nodePackages."dockerfile-language-server-nodejs"
+      nodePackages."pyright"
+      nodePackages."typescript"
+      nodePackages."typescript-language-server"
+      nodePackages."vscode-langservers-extracted"
+      nodePackages."yaml-language-server"
+      ocaml-ng.ocamlPackages_5_1.ocaml-lsp
+      ocaml-ng.ocamlPackages_5_1.ocamlformat
+      omnisharp-roslyn
+      rust-analyzer
+      terraform-ls
+
+      # formatters
+      nixpkgs-fmt
+      gofumpt
+      golines
+      python310Packages.black
+      rustfmt
+      terraform
+    ];
+
   mkNvimPlugins = { system }:
     let
       pkgs = inputs.nixpkgs.legacyPackages.${system};
@@ -62,39 +99,8 @@ rec {
 
   mkNvim = { system }:
     let
-      pkgs = (import inputs.nixpkgs {
-        inherit system; config.allowUnfree = true;
-      });
-      extraPackages = with pkgs; [
-        # language servers
-        cuelsp
-        gopls
-        haskell-language-server
-        jsonnet-language-server
-        lua-language-server
-        nil
-        nodePackages."bash-language-server"
-        nodePackages."diagnostic-languageserver"
-        nodePackages."dockerfile-language-server-nodejs"
-        nodePackages."pyright"
-        nodePackages."typescript"
-        nodePackages."typescript-language-server"
-        nodePackages."vscode-langservers-extracted"
-        nodePackages."yaml-language-server"
-        ocaml-ng.ocamlPackages_5_1.ocaml-lsp
-        ocaml-ng.ocamlPackages_5_1.ocamlformat
-        omnisharp-roslyn
-        rust-analyzer
-        terraform-ls
-
-        # formatters
-        nixpkgs-fmt
-        gofumpt
-        golines
-        python310Packages.black
-        rustfmt
-        terraform
-      ];
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      extraPackages = mkNvimPackages { inherit system; };
     in
     pkgs.neovim.override {
       configure = {
