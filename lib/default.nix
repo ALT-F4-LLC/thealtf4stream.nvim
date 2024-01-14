@@ -62,7 +62,10 @@ rec {
 
   mkNvimRuntimeInputs = { system }:
     let
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      pkgs = (import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      });
     in
     with pkgs; [
       # language servers
@@ -92,7 +95,7 @@ rec {
       golines
       python310Packages.black
       rustfmt
-      #terraform
+      terraform
     ];
 
   mkNvim = { system }:

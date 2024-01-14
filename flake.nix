@@ -13,25 +13,21 @@
 
       perSystem = { config, self', inputs', pkgs, system, ... }:
         let
+          inherit (pkgs) just mkShell writeShellApplication;
           neovim = self.lib.mkNvim { inherit system; };
           neovimRuntimeInputs = self.lib.mkNvimRuntimeInputs { inherit system; };
         in
         {
-          _module.args.pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-
           devShells = {
-            default = pkgs.mkShell {
-              buildInputs = with pkgs; [ just ];
+            default = mkShell {
+              buildInputs = [ just ];
             };
           };
 
           packages = {
             default = self.lib.mkNvimConfig { inherit system; };
 
-            neovim = pkgs.writeShellApplication
+            neovim = writeShellApplication
               {
                 runtimeInputs = [ neovim ] ++ neovimRuntimeInputs;
                 name = "nvim";
