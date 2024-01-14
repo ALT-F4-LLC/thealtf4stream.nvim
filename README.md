@@ -57,8 +57,7 @@ environment.systemPackages = [
 - (option b): Add to `home-manager` configuration:
 
 ```nix
-programs.neovim = {
-  enable = true;
-  package = inputs.thealtf4stream-nvim.packages.${pkgs.system}.neovim;
+programs.neovim = inputs.thealtf4stream-nvim.lib.mkHomeManager {
+  system = pkgs.system;
 };
 ```
