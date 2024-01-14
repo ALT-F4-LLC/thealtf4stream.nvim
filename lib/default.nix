@@ -1,7 +1,7 @@
 { inputs }:
 
 rec {
-  mkNvimConfig = { system }:
+  mkNvimPlugin = { system }:
     let
       pkgs = inputs.nixpkgs.legacyPackages.${system};
     in
@@ -60,7 +60,7 @@ rec {
   mkNvimPlugins = { system }:
     let
       pkgs = inputs.nixpkgs.legacyPackages.${system};
-      thealtf4stream-nvim = mkNvimConfig { inherit system; };
+      thealtf4stream-nvim = mkNvimPlugin { inherit system; };
     in
     with pkgs; [
       # languages
@@ -104,11 +104,7 @@ rec {
     in
     pkgs.neovim.override {
       configure = {
-        customRC = ''
-          lua << EOF
-            require 'TheAltF4Stream'.init()
-          EOF
-        '';
+        customRC = mkNvimConfig;
         packages.main =
           let
             plugins = mkNvimPlugins { inherit system; };
@@ -118,6 +114,26 @@ rec {
           };
       };
       extraMakeWrapperArgs = ''--suffix PATH : "${pkgs.lib.makeBinPath extraPackages}"'';
+      withNodeJs = true;
+      withPython3 = true;
+      withRuby = true;
+    };
+
+  mkNvimConfig = ''
+    lua << EOF
+      require 'TheAltF4Stream'.init()
+    EOF
+  '';
+
+  mkNvimHomeManager = { system }:
+    let
+      extraConfig = mkNvimConfig;
+      extraPackages = mkNvimPackages { inherit system; };
+      plugins = mkNvimPlugins { inherit system; };
+    in
+    {
+      inherit extraConfig extraPackages plugins;
+      enable = true;
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;
