@@ -13,9 +13,9 @@
 
       perSystem = { config, self', inputs', pkgs, system, ... }:
         let
-          inherit (pkgs) just mkShell writeShellApplication;
-          neovim = self.lib.mkNvim { inherit system; };
-          neovimRuntimeInputs = self.lib.mkNvimRuntimeInputs { inherit system; };
+          inherit (pkgs) just mkShell;
+          default = self.lib.mkVimPlugin { inherit system; };
+          neovim = self.lib.mkNeovim { inherit system; };
         in
         {
           devShells = {
@@ -24,18 +24,7 @@
             };
           };
 
-          packages = {
-            default = self.lib.mkNvimConfig { inherit system; };
-
-            neovim = writeShellApplication
-              {
-                runtimeInputs = [ neovim ] ++ neovimRuntimeInputs;
-                name = "nvim";
-                text = ''
-                  ${neovim}/bin/nvim "$@"
-                '';
-              };
-          };
+          packages = { inherit default neovim; };
         };
     };
 }
