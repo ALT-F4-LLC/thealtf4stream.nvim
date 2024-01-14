@@ -5,7 +5,10 @@ Neovim configuration for TheAltF4Stream as a plugin.
 
 ## Install
 
-### Neovim (Lua)
+### Neovim
+
+> [!WARNING]
+> By default, this setup was designed for Nix and needs a stable example Lua configuration.
 
 - WIP
 
