@@ -14,14 +14,20 @@ Neovim configuration for TheAltF4Stream as a plugin.
 This flake provides a `neovim` derivation that can be used as a packge on any Nix supported system. This is a "wrapped" variant of Neovim which includes configuration and dependencies (language servers, formatters, etc).
 
 > [!NOTE]
-> You can achieve the same to have an identical editor expierence on any `nix` supported host.
+> The `neovim` derivation provides an identical editor expierence on any `nix` supported host.
 
-#### Run directly
+#### Run in shell
 
-- Run directly with `nix` run command:
+- Run `neovim` directly with:
 
 ```shell
 nix run github:ALT-F4-LLC/thealtf4stream.nvim#neovim
+```
+
+- Run `neovim` in new shell with:
+
+```shell
+nix shell github:ALT-F4-LLC/thealtf4stream.nvim#neovim
 ```
 
 #### Add to flake
@@ -29,16 +35,24 @@ nix run github:ALT-F4-LLC/thealtf4stream.nvim#neovim
 - Add to `flake.nix` as an input:
 
 ```nix
-  inputs = {
-    thealtf4stream-nvim.url = "github:ALT-F4-LLC/thealtf4stream.nvim";
-  };
+inputs = {
+  thealtf4stream-nvim.url = "github:ALT-F4-LLC/thealtf4stream.nvim";
+};
 ```
 
-- Add to `home-manager` configuration:
+- (option a): Add to `environment.systemPackages` configuration:
 
 ```nix
-  programs.neovim = {
-    enable = true;
-    package = inputs.thealtf4stream-nvim.packages.${pkgs.system}.neovim;
-  };
+environment.systemPackages = [
+  inputs.thealtf4stream-nvim.packages.${pkgs.system}.neovim
+];
+```
+
+- (option b): Add to `home-manager` configuration:
+
+```nix
+programs.neovim = {
+  enable = true;
+  package = inputs.thealtf4stream-nvim.packages.${pkgs.system}.neovim;
+};
 ```
