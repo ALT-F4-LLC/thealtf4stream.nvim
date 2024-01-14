@@ -3,6 +3,8 @@ Neovim configuration for TheAltF4Stream as a plugin.
 
 [![Test flake](https://github.com/ALT-F4-LLC/thealtf4stream.nvim/actions/workflows/flake.yml/badge.svg)](https://github.com/ALT-F4-LLC/thealtf4stream.nvim/actions/workflows/flake.yml)
 
+![Preview](https://github.com/ALT-F4-LLC/thealtf4stream.nvim/blob/main/lib/preview.webp)
+
 ## Install
 
 ### Neovim
