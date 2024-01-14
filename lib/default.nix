@@ -60,62 +60,41 @@ rec {
       thealtf4stream-nvim
     ];
 
-  mkNvimRuntimeInputs = { system }:
+  mkNvim = { system }:
     let
       pkgs = (import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
+        inherit system; config.allowUnfree = true;
       });
-    in
-    with pkgs; [
-      # language servers
-      cuelsp
-      gopls
-      haskell-language-server
-      jsonnet-language-server
-      lua-language-server
-      nil
-      nodePackages."bash-language-server"
-      nodePackages."diagnostic-languageserver"
-      nodePackages."dockerfile-language-server-nodejs"
-      nodePackages."pyright"
-      nodePackages."typescript"
-      nodePackages."typescript-language-server"
-      nodePackages."vscode-langservers-extracted"
-      nodePackages."yaml-language-server"
-      ocaml-ng.ocamlPackages_5_1.ocaml-lsp
-      ocaml-ng.ocamlPackages_5_1.ocamlformat
-      omnisharp-roslyn
-      rust-analyzer
-      terraform-ls
+      extraPackages = with pkgs; [
+        # language servers
+        cuelsp
+        gopls
+        haskell-language-server
+        jsonnet-language-server
+        lua-language-server
+        nil
+        nodePackages."bash-language-server"
+        nodePackages."diagnostic-languageserver"
+        nodePackages."dockerfile-language-server-nodejs"
+        nodePackages."pyright"
+        nodePackages."typescript"
+        nodePackages."typescript-language-server"
+        nodePackages."vscode-langservers-extracted"
+        nodePackages."yaml-language-server"
+        ocaml-ng.ocamlPackages_5_1.ocaml-lsp
+        ocaml-ng.ocamlPackages_5_1.ocamlformat
+        omnisharp-roslyn
+        rust-analyzer
+        terraform-ls
 
-      # formatters
-      nixpkgs-fmt
-      gofumpt
-      golines
-      python310Packages.black
-      rustfmt
-      terraform
-    ];
-
-  mkNvimExec = { system }:
-    let
-      neovim = mkNvimFull { inherit system; };
-      neovimRuntimeInputs = mkNvimRuntimeInputs { inherit system; };
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-    in
-    pkgs.writeShellApplication
-      {
-        runtimeInputs = [ neovim ] ++ neovimRuntimeInputs;
-        name = "nvim";
-        text = ''
-          ${neovim}/bin/nvim "$@"
-        '';
-      };
-
-  mkNvimFull = { system }:
-    let
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
+        # formatters
+        nixpkgs-fmt
+        gofumpt
+        golines
+        python310Packages.black
+        rustfmt
+        terraform
+      ];
     in
     pkgs.neovim.override {
       configure = {
@@ -132,22 +111,9 @@ rec {
             start = plugins;
           };
       };
-
+      extraMakeWrapperArgs = ''--suffix PATH : "${pkgs.lib.makeBinPath extraPackages}"'';
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;
     };
-
-  mkNvim = { system }:
-    let
-      neovim = mkNvimFull { inherit system; };
-      neovimExec = mkNvimExec { inherit system; };
-    in
-    neovim.overrideAttrs (oldAttrs: {
-      installPhase = ''
-        mkdir -p $out/bin
-        cp ${neovimExec}/bin/nvim $out/bin/nvim
-      '';
-    });
 }
-
