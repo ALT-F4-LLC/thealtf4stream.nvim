@@ -39,8 +39,8 @@ jobs:
 
   build:
     env:
-      CACHIX_AUTH_TOKEN: '${{ secrets.ALTF4LLC_CACHIX_AUTH_TOKEN }}'
-      CACHIX_BINARY_CACHE: altf4llc
+      CACHIX_AUTH_TOKEN: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      CACHIX_BINARY_CACHE: altf4llc-os
     needs:
       - check
       - build-shell
