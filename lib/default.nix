@@ -68,8 +68,7 @@ rec {
 
   mkExtraPackages = { system }:
     let
-      inherit (pkgs) nodePackages ocaml-ng python310Packages;
-      inherit (ocaml-ng) ocamlPackages_5_1;
+      inherit (pkgs) nodePackages ocamlPackages python310Packages;
       pkgs = (import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -85,8 +84,8 @@ rec {
       nodePackages."typescript-language-server"
       nodePackages."vscode-langservers-extracted"
       nodePackages."yaml-language-server"
-      ocamlPackages_5_1.ocaml-lsp
-      ocamlPackages_5_1.ocamlformat
+      ocamlPackages.ocaml-lsp
+      ocamlPackages.ocamlformat
       pkgs.cuelsp
       pkgs.gopls
       pkgs.haskell-language-server

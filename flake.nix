@@ -14,8 +14,6 @@
       perSystem = { config, self', inputs', pkgs, system, ... }:
         let
           inherit (pkgs) just mkShell;
-          default = self.lib.mkVimPlugin { inherit system; };
-          neovim = self.lib.mkNeovim { inherit system; };
         in
         {
           devShells = {
@@ -24,7 +22,10 @@
             };
           };
 
-          packages = { inherit default neovim; };
+          packages = {
+            default = self.lib.mkVimPlugin { inherit system; };
+            neovim = self.lib.mkNeovim { inherit system; };
+          };
         };
     };
 }
