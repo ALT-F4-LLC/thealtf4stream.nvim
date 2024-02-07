@@ -138,7 +138,7 @@ local function init()
         nil_ls = {
             settings = {
                 ['nil'] = {
-                    formatting = { command = { "nixpkgs-fmt" } },
+                    formatting = { command = { "alejandra" } },
                 },
             }
         },
