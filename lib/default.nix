@@ -1,6 +1,16 @@
 {inputs}: let
   inherit (inputs.nixpkgs) legacyPackages;
 in rec {
+  mkCopilotChat = {system}: let
+    inherit (pkgs) vimUtils;
+    inherit (vimUtils) buildVimPlugin;
+    pkgs = legacyPackages.${system};
+  in
+    buildVimPlugin {
+      name = "CopilotChat";
+      src = inputs.copilotchat;
+    };
+
   mkVimPlugin = {system}: let
     inherit (pkgs) vimUtils;
     inherit (vimUtils) buildVimPlugin;
@@ -23,6 +33,7 @@ in rec {
 
   mkNeovimPlugins = {system}: let
     inherit (pkgs) vimPlugins;
+    copilotchat = mkCopilotChat {inherit system;};
     pkgs = legacyPackages.${system};
     thealtf4stream-nvim = mkVimPlugin {inherit system;};
   in [
@@ -43,6 +54,7 @@ in rec {
     vimPlugins.vim-floaterm
 
     # extras
+    copilotchat
     vimPlugins.ChatGPT-nvim
     vimPlugins.copilot-lua
     vimPlugins.gitsigns-nvim
@@ -62,8 +74,7 @@ in rec {
   ];
 
   mkExtraPackages = {system}: let
-    inherit (pkgs) nodePackages ocamlPackages python311Packages;
-
+    inherit (pkgs) nodePackages ocamlPackages python3Packages;
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -97,14 +108,7 @@ in rec {
     pkgs.golines
     pkgs.rustfmt
     pkgs.terraform
-    python311Packages.black
-
-    # support
-    python311Packages.prompt-toolkit
-    python311Packages.pynvim
-    python311Packages.python-dotenv
-    python311Packages.requests
-    python311Packages.tiktoken
+    python3Packages.black
   ];
 
   mkExtraConfig = ''
@@ -125,6 +129,13 @@ in rec {
         packages.main = {inherit start;};
       };
       extraMakeWrapperArgs = ''--suffix PATH : "${lib.makeBinPath extraPackages}"'';
+      extraPythonPackages = ps: [
+        ps.prompt-toolkit
+        ps.pynvim
+        ps.python-dotenv
+        ps.requests
+        ps.tiktoken
+      ];
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;

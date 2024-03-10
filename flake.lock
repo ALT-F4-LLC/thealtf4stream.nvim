@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "copilotchat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709893773,
+        "narHash": "sha256-uajsdXNu8paI+Mn/FDD78KOWklGw6Y0Bpn2zdl8EghE=",
+        "owner": "CopilotC-Nvim",
+        "repo": "CopilotChat.nvim",
+        "rev": "b99aabf5138f3949f139df334828d0eb7859cc27",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CopilotC-Nvim",
+        "repo": "CopilotChat.nvim",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -53,6 +69,7 @@
     },
     "root": {
       "inputs": {
+        "copilotchat": "copilotchat",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs"
       }
