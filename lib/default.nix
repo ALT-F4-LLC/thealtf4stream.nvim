@@ -55,13 +55,15 @@ in rec {
     vimPlugins.nvim-web-devicons
     vimPlugins.omnisharp-extended-lsp-nvim
     vimPlugins.rainbow-delimiters-nvim
+    vimPlugins.trouble-nvim
 
     # configuration
     thealtf4stream-nvim
   ];
 
   mkExtraPackages = {system}: let
-    inherit (pkgs) nodePackages ocamlPackages python310Packages;
+    inherit (pkgs) nodePackages ocamlPackages python311Packages;
+
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -76,6 +78,7 @@ in rec {
     nodePackages."typescript-language-server"
     nodePackages."vscode-langservers-extracted"
     nodePackages."yaml-language-server"
+    ocamlPackages.dune_3
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
     pkgs.cuelsp
@@ -92,9 +95,16 @@ in rec {
     pkgs.alejandra
     pkgs.gofumpt
     pkgs.golines
-    python310Packages.black
     pkgs.rustfmt
     pkgs.terraform
+    python311Packages.black
+
+    # support
+    python311Packages.prompt-toolkit
+    python311Packages.pynvim
+    python311Packages.python-dotenv
+    python311Packages.requests
+    python311Packages.tiktoken
   ];
 
   mkExtraConfig = ''
