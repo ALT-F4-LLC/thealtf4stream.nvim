@@ -99,6 +99,7 @@ in rec {
     pkgs.lua-language-server
     pkgs.nil
     pkgs.omnisharp-roslyn
+    pkgs.postgres-lsp
     pkgs.rust-analyzer
     pkgs.terraform-ls
 

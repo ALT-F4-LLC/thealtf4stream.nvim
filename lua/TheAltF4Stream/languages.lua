@@ -149,6 +149,7 @@ local function init()
                 ["textDocument/definition"] = omnisharp_extended.handler,
             },
         },
+        postgres_lsp = {},
         pyright = {
             settings = {
                 python = {
