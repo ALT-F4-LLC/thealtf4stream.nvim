@@ -29,7 +29,7 @@
         inherit (pkgs) just mkShell;
       in {
         apps = {
-          neovim = {
+          nvim = {
             program = "${config.packages.neovim}/bin/nvim";
             type = "app";
           };
