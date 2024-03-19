@@ -56,10 +56,10 @@ in rec {
     # extras
     CopilotChat-nvim
     vimPlugins.ChatGPT-nvim
+    vimPlugins.comment-nvim
     vimPlugins.copilot-lua
     vimPlugins.gitsigns-nvim
     vimPlugins.lualine-nvim
-    vimPlugins.nerdcommenter
     vimPlugins.noice-nvim
     vimPlugins.nui-nvim
     vimPlugins.nvim-colorizer-lua

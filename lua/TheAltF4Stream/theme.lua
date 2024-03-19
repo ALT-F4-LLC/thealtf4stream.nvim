@@ -4,9 +4,12 @@ local lualine = require 'lualine'
 local noice = require 'noice'
 local notify = require 'notify'
 local oxocarbon = require('oxocarbon').oxocarbon
+local comment = require 'Comment'
 
 local function init()
     colorizer.setup {}
+
+    comment.setup {}
 
     gitsigns.setup {}
 
@@ -16,13 +19,13 @@ local function init()
         },
     }
 
-    notify.setup({
+    notify.setup {
         background_colour = "#000000",
         render = "wrapped-compact",
         timeout = 2500,
-    })
+    }
 
-    noice.setup({
+    noice.setup {
         lsp = {
             override = {
                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -36,7 +39,7 @@ local function init()
             long_message_to_split = true,
             lsp_doc_border = false,
         },
-    })
+    }
 
     vim.opt.background = "dark"
     vim.cmd.colorscheme "oxocarbon"
