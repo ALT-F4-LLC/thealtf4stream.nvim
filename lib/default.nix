@@ -33,9 +33,9 @@ in rec {
 
   mkNeovimPlugins = {system}: let
     inherit (pkgs) vimPlugins;
-    copilotchat = mkCopilotChat {inherit system;};
+    CopilotChat-nvim = mkCopilotChat {inherit system;};
     pkgs = legacyPackages.${system};
-    thealtf4stream-nvim = mkVimPlugin {inherit system;};
+    TheAltF4Stream-nvim = mkVimPlugin {inherit system;};
   in [
     # languages
     vimPlugins.nvim-lspconfig
@@ -54,12 +54,13 @@ in rec {
     vimPlugins.vim-floaterm
 
     # extras
-    copilotchat
+    CopilotChat-nvim
     vimPlugins.ChatGPT-nvim
     vimPlugins.copilot-lua
     vimPlugins.gitsigns-nvim
     vimPlugins.lualine-nvim
     vimPlugins.nerdcommenter
+    vimPlugins.noice-nvim
     vimPlugins.nui-nvim
     vimPlugins.nvim-colorizer-lua
     vimPlugins.nvim-notify
@@ -70,7 +71,7 @@ in rec {
     vimPlugins.trouble-nvim
 
     # configuration
-    thealtf4stream-nvim
+    TheAltF4Stream-nvim
   ];
 
   mkExtraPackages = {system}: let

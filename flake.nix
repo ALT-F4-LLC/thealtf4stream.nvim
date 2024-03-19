@@ -26,7 +26,7 @@
         system,
         ...
       }: let
-        inherit (pkgs) just mkShell;
+        inherit (pkgs) alejandra just mkShell;
       in {
         apps = {
           nvim = {
@@ -41,7 +41,7 @@
           };
         };
 
-        formatter = pkgs.alejandra;
+        formatter = alejandra;
 
         packages = {
           default = self.lib.mkVimPlugin {inherit system;};
