@@ -3,15 +3,16 @@
     "copilotchat": {
       "flake": false,
       "locked": {
-        "lastModified": 1709893773,
-        "narHash": "sha256-uajsdXNu8paI+Mn/FDD78KOWklGw6Y0Bpn2zdl8EghE=",
+        "lastModified": 1710804560,
+        "narHash": "sha256-VEN1OthcQ+kKqONpSYyXSEi5PTWTGuThSTBdCyRd4vs=",
         "owner": "CopilotC-Nvim",
         "repo": "CopilotChat.nvim",
-        "rev": "b99aabf5138f3949f139df334828d0eb7859cc27",
+        "rev": "23b92f102ca6d0f3529f11ca099bdedd9377615b",
         "type": "github"
       },
       "original": {
         "owner": "CopilotC-Nvim",
+        "ref": "canary",
         "repo": "CopilotChat.nvim",
         "type": "github"
       }
@@ -35,11 +36,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1709703039,
-        "narHash": "sha256-6hqgQ8OK6gsMu1VtcGKBxKQInRLHtzulDo9Z5jxHEFY=",
+        "lastModified": 1710631334,
+        "narHash": "sha256-rL5LSYd85kplL5othxK5lmAtjyMOBg390sGBTb3LRMM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9df3e30ce24fd28c7b3e2de0d986769db5d6225d",
+        "rev": "c75037bbf9093a2acb617804ee46320d6d1fea5a",
         "type": "github"
       },
       "original": {

@@ -2,7 +2,7 @@
   description = "Neovim configuration for TheAltF4Stream as a plugin";
 
   inputs.copilotchat.flake = false;
-  inputs.copilotchat.url = "github:CopilotC-Nvim/CopilotChat.nvim";
+  inputs.copilotchat.url = "github:CopilotC-Nvim/CopilotChat.nvim?ref=canary";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = inputs @ {

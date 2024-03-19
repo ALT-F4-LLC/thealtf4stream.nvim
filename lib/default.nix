@@ -130,13 +130,6 @@ in rec {
         packages.main = {inherit start;};
       };
       extraMakeWrapperArgs = ''--suffix PATH : "${lib.makeBinPath extraPackages}"'';
-      extraPythonPackages = ps: [
-        ps.prompt-toolkit
-        ps.pynvim
-        ps.python-dotenv
-        ps.requests
-        ps.tiktoken
-      ];
       withNodeJs = true;
       withPython3 = true;
       withRuby = true;

@@ -15,3 +15,6 @@ cache-shell cache_name="altf4llc-os":
 
 check:
     nix flake check
+
+update:
+    nix flake update
