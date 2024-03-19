@@ -1,14 +1,25 @@
-local copilot_chat = require("CopilotChat")
+local copilotchat = require("CopilotChat")
+local copilotchat_select = require("CopilotChat.select")
+
+local function CopilotChatWithInput()
+    local input = vim.fn.input("Prompt: ")
+    if input ~= "" then
+        copilotchat.ask(input, { selection = copilotchat_select.visual })
+    end
+end
 
 local function init()
-    copilot_chat.setup()
+    copilotchat.setup { debug = false }
 
-    local map = vim.api.nvim_set_keymap
+    local options = { noremap = true, silent = true }
 
-    local options = { noremap = true }
-
-    map('n', '<leader>co', ':lua require("CopilotChat.code_actions").show_help_actions()', options)
-    map('n', '<leader>cp', ':lua require("CopilotChat.code_actions").show_prompt_actions(true)', options)
+    vim.keymap.set('n', '<leader>cm', "<CMD>CopilotChatCommitStaged<CR>", options)
+    vim.keymap.set('v', '<leader>ce', "<CMD>CopilotChatExplain<CR>", options)
+    vim.keymap.set('n', '<leader>cf', "<CMD>CopilotChatFixDiagnostic<CR>", options)
+    vim.keymap.set('v', '<leader>cd', "<CMD>CopilotChatDocs<CR>", options)
+    vim.keymap.set('v', '<leader>co', "<CMD>CopilotChatOptimize<CR>", options)
+    vim.keymap.set('v', '<leader>cp', CopilotChatWithInput, options)
+    vim.keymap.set('v', '<leader>ct', "<CMD>CopilotChatTests<CR>", options)
 end
 
 return {

@@ -42,13 +42,12 @@ local function set_vim_opt()
 end
 
 local function set_vim_keymaps()
-    local map = vim.api.nvim_set_keymap
-    local options = { noremap = false }
+    local options = { noremap = false, silent = true }
 
-    map('n', '<leader>h', '<CMD>wincmd h<CR>', options)
-    map('n', '<leader>j', '<CMD>wincmd j<CR>', options)
-    map('n', '<leader>k', '<CMD>wincmd k<CR>', options)
-    map('n', '<leader>l', '<CMD>wincmd l<CR>', options)
+    vim.keymap.set('n', '<leader>h', '<CMD>wincmd h<CR>', options)
+    vim.keymap.set('n', '<leader>j', '<CMD>wincmd j<CR>', options)
+    vim.keymap.set('n', '<leader>k', '<CMD>wincmd k<CR>', options)
+    vim.keymap.set('n', '<leader>l', '<CMD>wincmd l<CR>', options)
 end
 
 local function init()

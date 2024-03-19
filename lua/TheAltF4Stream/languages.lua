@@ -149,6 +149,7 @@ local function init()
                 ["textDocument/definition"] = omnisharp_extended.handler,
             },
         },
+        postgres_lsp = {},
         pyright = {
             settings = {
                 python = {
@@ -192,9 +193,14 @@ local function init()
     vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
     treesitter.setup {
+        auto_install = false,
+        ensure_installed = {},
         highlight = { enable = true },
+        ignore_install = {},
         indent = { enable = true },
+        modules = {},
         rainbow = { enable = true },
+        sync_install = false,
     }
 
     treesitter_context.setup()

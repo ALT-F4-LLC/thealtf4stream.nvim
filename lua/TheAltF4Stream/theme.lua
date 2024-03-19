@@ -1,19 +1,43 @@
 local colorizer = require 'colorizer'
 local gitsigns = require 'gitsigns'
 local lualine = require 'lualine'
+local noice = require 'noice'
+local notify = require 'notify'
 local oxocarbon = require('oxocarbon').oxocarbon
+local comment = require 'Comment'
 
 local function init()
     colorizer.setup {}
+
+    comment.setup {}
 
     gitsigns.setup {}
 
     lualine.setup {
         options = {
-            component_separators = { left = '', right = '' },
             extensions = { "fzf", "quickfix" },
-            icons_enabled = false,
-            section_separators = { left = '', right = '' },
+        },
+    }
+
+    notify.setup {
+        background_colour = "#000000",
+        render = "wrapped-compact",
+        timeout = 2500,
+    }
+
+    noice.setup {
+        lsp = {
+            override = {
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                ["vim.lsp.util.stylize_markdown"] = true,
+            },
+        },
+        presets = {
+            bottom_search = true,
+            command_palette = true,
+            inc_rename = false,
+            long_message_to_split = true,
+            lsp_doc_border = false,
         },
     }
 

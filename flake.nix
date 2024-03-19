@@ -1,6 +1,8 @@
 {
   description = "Neovim configuration for TheAltF4Stream as a plugin";
 
+  inputs.copilotchat.flake = false;
+  inputs.copilotchat.url = "github:CopilotC-Nvim/CopilotChat.nvim?ref=canary";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = inputs @ {
@@ -24,15 +26,22 @@
         system,
         ...
       }: let
-        inherit (pkgs) just mkShell;
+        inherit (pkgs) alejandra just mkShell;
       in {
+        apps = {
+          nvim = {
+            program = "${config.packages.neovim}/bin/nvim";
+            type = "app";
+          };
+        };
+
         devShells = {
           default = mkShell {
             buildInputs = [just];
           };
         };
 
-        formatter = pkgs.alejandra;
+        formatter = alejandra;
 
         packages = {
           default = self.lib.mkVimPlugin {inherit system;};
