@@ -48,7 +48,7 @@ in rec {
     vimPlugins.telescope-nvim
 
     # theme
-    vimPlugins.oxocarbon-nvim
+    vimPlugins.tokyonight-nvim
 
     # floaterm
     vimPlugins.vim-floaterm
