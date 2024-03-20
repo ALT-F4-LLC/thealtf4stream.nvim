@@ -1,10 +1,10 @@
 local colorizer = require 'colorizer'
+local comment = require 'Comment'
 local gitsigns = require 'gitsigns'
 local lualine = require 'lualine'
 local noice = require 'noice'
 local notify = require 'notify'
-local oxocarbon = require('oxocarbon').oxocarbon
-local comment = require 'Comment'
+local tokyonight = require 'tokyonight'
 
 local function init()
     colorizer.setup {}
@@ -16,14 +16,14 @@ local function init()
     lualine.setup {
         options = {
             extensions = { "fzf", "quickfix" },
+            theme = 'tokyonight',
         },
     }
 
-    notify.setup {
-        background_colour = "#000000",
+    notify.setup({
         render = "wrapped-compact",
         timeout = 2500,
-    }
+    })
 
     noice.setup {
         lsp = {
@@ -41,26 +41,42 @@ local function init()
         },
     }
 
-    vim.opt.background = "dark"
-    vim.cmd.colorscheme "oxocarbon"
+    tokyonight.setup {
+        on_highlights = function(hl, c)
+            local prompt = "#2d3149"
+            hl.TelescopeNormal = {
+                bg = c.bg_dark,
+                fg = c.fg_dark,
+            }
+            hl.TelescopeBorder = {
+                bg = c.bg_dark,
+                fg = c.bg_dark,
+            }
+            hl.TelescopePromptNormal = {
+                bg = prompt,
+            }
+            hl.TelescopePromptBorder = {
+                bg = prompt,
+                fg = prompt,
+            }
+            hl.TelescopePromptTitle = {
+                bg = prompt,
+                fg = prompt,
+            }
+            hl.TelescopePreviewTitle = {
+                bg = c.bg_dark,
+                fg = c.bg_dark,
+            }
+            hl.TelescopeResultsTitle = {
+                bg = c.bg_dark,
+                fg = c.bg_dark,
+            }
+        end,
+        style = "night",
+        transparent = true,
+    }
 
-    --[[ Editor ]]
-    vim.api.nvim_set_hl(0, "Normal", { bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = oxocarbon.none })
-
-    --[[ Telescope ]]
-    vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = oxocarbon.base03, bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "TelescopeMatching",
-        { fg = oxocarbon.base14, bg = oxocarbon.none, bold = true, italic = true })
-    vim.api.nvim_set_hl(0, "TelescopeNormal", { fg = oxocarbon.none, bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "TelescopePreviewLine", { fg = oxocarbon.none, bg = oxocarbon.base01 })
-    vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = oxocarbon.base14, bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = oxocarbon.base03, bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "TelescopePromptNormal", { fg = oxocarbon.base04, bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = oxocarbon.base08, bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = oxocarbon.base14, bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = oxocarbon.base14, bg = oxocarbon.none })
-    vim.api.nvim_set_hl(0, "TelescopeSelection", { fg = oxocarbon.none, bg = oxocarbon.base02 })
+    vim.cmd [[colorscheme tokyonight-night]]
 end
 
 return {

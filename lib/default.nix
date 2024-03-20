@@ -48,7 +48,7 @@ in rec {
     vimPlugins.telescope-nvim
 
     # theme
-    vimPlugins.oxocarbon-nvim
+    vimPlugins.tokyonight-nvim
 
     # floaterm
     vimPlugins.vim-floaterm
@@ -145,6 +145,7 @@ in rec {
     plugins = mkNeovimPlugins {inherit system;};
   in {
     inherit extraConfig extraPackages plugins;
+    defaultEditor = true;
     enable = true;
     withNodeJs = true;
     withPython3 = true;
