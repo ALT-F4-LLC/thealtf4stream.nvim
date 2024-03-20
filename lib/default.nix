@@ -145,6 +145,7 @@ in rec {
     plugins = mkNeovimPlugins {inherit system;};
   in {
     inherit extraConfig extraPackages plugins;
+    defaultEditor = true;
     enable = true;
     withNodeJs = true;
     withPython3 = true;
