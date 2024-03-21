@@ -106,6 +106,7 @@ local function init()
             }
         },
         dockerls = {},
+        gleam = {},
         gopls = {
             settings = {
                 gopls = {
