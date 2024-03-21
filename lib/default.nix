@@ -94,6 +94,7 @@ in rec {
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
     pkgs.cuelsp
+    pkgs.gleam
     pkgs.gopls
     pkgs.haskell-language-server
     pkgs.jsonnet-language-server
