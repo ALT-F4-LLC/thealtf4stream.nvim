@@ -6,21 +6,20 @@ on:
     branches:
       - main
 
+env:
+  CACHIX_BINARY_CACHE: altf4llc-os
+
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: cachix/install-nix-action@v25
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: cachix/cachix-action@v12
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@v14
         with:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-          name: altf4llc-os
-      - uses: actions/checkout@v3
+          name: ${{ env.CACHIX_BINARY_CACHE }}
+      - uses: actions/checkout@v4
       - run: nix develop -c just check
-      - run: nix develop -c just cache-inputs
-      - run: nix develop -c just cache-shell
 
   build:
     needs:
@@ -32,12 +31,10 @@ jobs:
           - default
           - neovim
     steps:
-      - uses: cachix/install-nix-action@v25
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: cachix/cachix-action@v12
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: cachix/cachix-action@v14
         with:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-          name: altf4llc-os
+          name: ${{ env.CACHIX_BINARY_CACHE }}
       - uses: actions/checkout@v4
-      - run: nix develop -c just cache-build "${{ matrix.profile }}"
+      - run: nix develop -c just build "${{ matrix.profile }}"

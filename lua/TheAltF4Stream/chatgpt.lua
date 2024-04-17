@@ -5,8 +5,8 @@ local function init()
 
     chatgpt.setup({
         api_key_cmd = api_key_cmd,
-        openai_params = { model = "gpt-4-turbo-preview" },
-        openai_edit_params = { model = "gpt-4" }
+        openai_edit_params = { model = "gpt-4" },
+        openai_params = { model = "gpt-4" },
     })
 
     local options = { noremap = true, silent = true }
