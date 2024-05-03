@@ -23,8 +23,8 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - uses: cachix/cachix-action@v14
         with:
-          authtoken: ${{ secrets.cachix_auth_token }}
-          name: ${{ env.cachix_binary_cache }}
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          name: ${{ env.CACHIX_BINARY_CACHE }}
       - uses: actions/checkout@v4
       - run: nix develop -c just check
 
@@ -46,7 +46,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - uses: cachix/cachix-action@v14
         with:
-          authtoken: ${{ secrets.cachix_auth_token }}
-          name: ${{ env.cachix_binary_cache }}
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          name: ${{ env.CACHIX_BINARY_CACHE }}
       - uses: actions/checkout@v4
       - run: nix develop -c just build "${{ matrix.profile }}"
