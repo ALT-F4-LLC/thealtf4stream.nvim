@@ -11,7 +11,9 @@ env:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on:
+      - macos-latest
+      - ubuntu-latest
     steps:
       - uses: cachix/install-nix-action@v26
         with:
@@ -27,7 +29,9 @@ jobs:
   build:
     needs:
       - check
-    runs-on: ubuntu-latest
+    runs-on:
+      - macos-latest
+      - ubuntu-latest
     strategy:
       matrix:
         profile:
