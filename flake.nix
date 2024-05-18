@@ -2,10 +2,9 @@
   description = "Neovim configuration for TheAltF4Stream as a plugin";
 
   inputs = {
-    copilotchat = {
-      flake = false;
-      url = "github:CopilotC-Nvim/CopilotChat.nvim?ref=canary";
-    };
+    copilotchat.flake = false;
+    copilotchat.url = "github:CopilotC-Nvim/CopilotChat.nvim?ref=canary";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
