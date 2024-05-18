@@ -5,7 +5,7 @@ end
 local function set_vim_o()
     local settings = {
         clipboard = 'unnamedplus',
-        colorcolumn = 80,
+        colorcolumn = '80',
         expandtab = true,
         scrolloff = 3,
         shiftwidth = 4,
@@ -19,9 +19,6 @@ local function set_vim_o()
     for k, v in pairs(settings) do
         vim.o[k] = v
     end
-
-    -- Not supported
-    vim.cmd("set colorcolumn=80")
 end
 
 local function set_vim_wo()
