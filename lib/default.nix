@@ -100,6 +100,7 @@ in rec {
     pkgs.jsonnet-language-server
     pkgs.lua-language-server
     pkgs.nil
+    pkgs.nls
     pkgs.omnisharp-roslyn
     pkgs.postgres-lsp
     pkgs.rust-analyzer

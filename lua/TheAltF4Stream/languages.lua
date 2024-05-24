@@ -136,6 +136,7 @@ local function init()
                 },
             }
         },
+        nickel_ls = {},
         nil_ls = {
             settings = {
                 ['nil'] = {
