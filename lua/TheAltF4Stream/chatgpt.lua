@@ -1,12 +1,10 @@
 local chatgpt = require 'chatgpt'
 
 local function init()
-    local api_key_cmd = "doppler secrets get OPENAI_API_KEY --plain"
-
     chatgpt.setup({
-        api_key_cmd = api_key_cmd,
-        openai_edit_params = { model = "gpt-4" },
-        openai_params = { model = "gpt-4" },
+        api_key_cmd = "doppler secrets get OPENAI_API_KEY --plain",
+        openai_edit_params = { model = "gpt-4o" },
+        openai_params = { model = "gpt-4o" },
     })
 
     local options = { noremap = true, silent = true }

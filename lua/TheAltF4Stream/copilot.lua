@@ -13,10 +13,11 @@ local function init()
 
     local options = { noremap = true, silent = true }
 
-    vim.keymap.set('n', '<leader>cm', "<CMD>CopilotChatCommitStaged<CR>", options)
-    vim.keymap.set('v', '<leader>ce', "<CMD>CopilotChatExplain<CR>", options)
+    vim.keymap.set('n', '<leader>cc', "<CMD>CopilotChatToggle<CR>", options)
     vim.keymap.set('n', '<leader>cf', "<CMD>CopilotChatFixDiagnostic<CR>", options)
+    vim.keymap.set('n', '<leader>cm', "<CMD>CopilotChatCommitStaged<CR>", options)
     vim.keymap.set('v', '<leader>cd', "<CMD>CopilotChatDocs<CR>", options)
+    vim.keymap.set('v', '<leader>ce', "<CMD>CopilotChatExplain<CR>", options)
     vim.keymap.set('v', '<leader>co', "<CMD>CopilotChatOptimize<CR>", options)
     vim.keymap.set('v', '<leader>cp', CopilotChatWithInput, options)
     vim.keymap.set('v', '<leader>ct', "<CMD>CopilotChatTests<CR>", options)
