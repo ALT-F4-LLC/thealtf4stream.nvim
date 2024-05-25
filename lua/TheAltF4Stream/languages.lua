@@ -163,6 +163,7 @@ local function init()
                 },
             },
         },
+        sourcekit = {},
         terraformls = {},
         tsserver = {},
         yamlls = {

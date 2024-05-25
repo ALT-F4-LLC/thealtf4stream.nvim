@@ -105,6 +105,7 @@ in rec {
     pkgs.omnisharp-roslyn
     pkgs.postgres-lsp
     pkgs.rust-analyzer
+    pkgs.sourcekit-lsp
     pkgs.terraform-ls
 
     # formatters
