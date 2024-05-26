@@ -43,6 +43,7 @@ in rec {
     vimPlugins.rust-tools-nvim
     vimPlugins.vim-just
     vimPlugins.vim-nickel
+    vimPlugins.zig-vim
 
     # telescope
     vimPlugins.plenary-nvim
@@ -107,6 +108,7 @@ in rec {
     pkgs.rust-analyzer
     pkgs.sourcekit-lsp
     pkgs.terraform-ls
+    pkgs.zls
 
     # formatters
     pkgs.alejandra
