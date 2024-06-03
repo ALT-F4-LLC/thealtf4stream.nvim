@@ -190,6 +190,9 @@ ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Package manager
 
+  -- Environment
+  use 'ALT-F4-LLC/thealtf4stream.nvim'
+
   -- Languages
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -198,19 +201,21 @@ return require('packer').startup(function(use)
   use 'nickel-lang/vim-nickel'
   use 'ziglang/zig.vim'
 
-  -- Telescope
+  -- Navigation
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
   -- Theme
   use 'folke/tokyonight.nvim'
 
-  -- Floaterm
+  -- Terminal
   use 'voldikss/vim-floaterm'
 
-  -- Extras
+  -- Completion
   use 'github/copilot.vim'
   use 'jackMort/ChatGPT.nvim'
+
+  -- Extras
   use 'numToStr/Comment.nvim'
   use 'zbirenbaum/copilot.lua'
   use 'lewis6991/gitsigns.nvim'
@@ -224,9 +229,6 @@ return require('packer').startup(function(use)
   use 'Hoffs/omnisharp-extended-lsp.nvim'
   use 'HiPhish/rainbow-delimiters.nvim'
   use 'folke/trouble.nvim'
-
-  -- Base
-  use 'ALT-F4-LLC/thealtf4stream.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
