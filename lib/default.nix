@@ -96,6 +96,7 @@ in rec {
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
     pkgs.cuelsp
+    pkgs.dhall-lsp-server
     pkgs.gleam
     pkgs.gopls
     pkgs.haskell-language-server
