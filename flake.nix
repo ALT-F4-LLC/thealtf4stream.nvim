@@ -1,5 +1,5 @@
 {
-  description = "Neovim configuration for TheAltF4Stream as a plugin";
+  description = "Neovim configuration for TheAltF4Stream.";
 
   inputs = {
     copilotchat.flake = false;

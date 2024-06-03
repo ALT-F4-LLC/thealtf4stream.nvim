@@ -5,11 +5,25 @@ Neovim configuration and examples for TheAltF4Stream.
 
 ![Preview](https://github.com/ALT-F4-LLC/thealtf4stream.nvim/blob/main/lib/preview.webp)
 
+## Contents
+
+- [Plugins](#plugins)
+    - [Base](#base)
+    - [Languages](#languages)
+    - [Navigation](#navigation)
+    - [Theme](#theme)
+    - [Terminal](#terminal)
+    - [Completion](#completion)
+    - [Extras](#extras)
+- [Install](#install)
+    - [Lua](#lua)
+    - [Nix](#nix)
+
 ## Plugins
 
 ### Base
 
-Base plugin that provides support for `TheAltF4Stream` experience which configures all other plugins below.
+Base plugin (this repo) which provides an "out-of-the-box" solution configuring all other plugins mentioned below.
 
 > [!IMPORTANT]
 > This plugin must be loaded last after all others in your configuration (see install section).
@@ -92,9 +106,6 @@ There are two potential methods for setting up my development environment in Neo
 ### Lua
 
 Example of how to setup Neovim with Lua based solutions like Packer, etc.
-
-> [!WARNING]
-> By default, this setup was designed for Nix and needs a stable example Lua configuration.
 
 #### Example
 
