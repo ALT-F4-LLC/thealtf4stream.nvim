@@ -27,7 +27,7 @@ Neovim configuration and examples for TheAltF4Stream.
 
 ### Environment
 
-Environment plugin (this repo) which provides an "out-of-the-box" solution configuring all other plugins mentioned below.
+Environment plugin (this repo) which provides an "out-of-the-box" solution configuring all dependencies and plugins mentioned below.
 
 > [!IMPORTANT]
 > This plugin must be loaded last after all others in your configuration (see install section).
