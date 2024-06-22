@@ -87,7 +87,6 @@ in rec {
     nodePackages."bash-language-server"
     nodePackages."diagnostic-languageserver"
     nodePackages."dockerfile-language-server-nodejs"
-    nodePackages."pyright"
     nodePackages."typescript"
     nodePackages."typescript-language-server"
     nodePackages."vscode-langservers-extracted"
@@ -106,6 +105,7 @@ in rec {
     pkgs.nls
     pkgs.omnisharp-roslyn
     pkgs.postgres-lsp
+    pkgs.pyright
     pkgs.rust-analyzer
     pkgs.sourcekit-lsp
     pkgs.terraform-ls
