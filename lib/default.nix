@@ -84,14 +84,13 @@ in rec {
     };
   in [
     # language servers
-    nodePackages."bash-language-server"
-    nodePackages."diagnostic-languageserver"
-    nodePackages."dockerfile-language-server-nodejs"
-    nodePackages."pyright"
-    nodePackages."typescript"
-    nodePackages."typescript-language-server"
-    nodePackages."vscode-langservers-extracted"
-    nodePackages."yaml-language-server"
+    nodePackages.bash-language-server
+    nodePackages.diagnostic-languageserver
+    nodePackages.dockerfile-language-server-nodejs
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server
     ocamlPackages.dune_3
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
@@ -106,6 +105,7 @@ in rec {
     pkgs.nls
     pkgs.omnisharp-roslyn
     pkgs.postgres-lsp
+    pkgs.pyright
     pkgs.rust-analyzer
     pkgs.sourcekit-lsp
     pkgs.terraform-ls
