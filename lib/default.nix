@@ -95,8 +95,6 @@ in rec {
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
     pkgs.cuelsp
-    pkgs.dhall-lsp-server
-    pkgs.gleam
     pkgs.gopls
     pkgs.haskell-language-server
     pkgs.jsonnet-language-server
@@ -107,7 +105,6 @@ in rec {
     pkgs.postgres-lsp
     pkgs.pyright
     pkgs.rust-analyzer
-    pkgs.sourcekit-lsp
     pkgs.terraform-ls
     pkgs.zls
 

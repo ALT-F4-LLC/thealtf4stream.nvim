@@ -105,9 +105,7 @@ local function init()
                 },
             }
         },
-        dhall_lsp_server = {},
         dockerls = {},
-        gleam = {},
         gopls = {
             settings = {
                 gopls = {
@@ -164,7 +162,6 @@ local function init()
                 },
             },
         },
-        sourcekit = {},
         terraformls = {},
         tsserver = {},
         yamlls = {

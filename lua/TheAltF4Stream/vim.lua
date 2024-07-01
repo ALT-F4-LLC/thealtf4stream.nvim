@@ -23,6 +23,8 @@ end
 
 local function set_vim_wo()
     local settings = {
+        foldexpr = 'nvim_treesitter#foldexpr()',
+        foldmethod = 'expr',
         number = true,
         relativenumber = true,
         wrap = false,
