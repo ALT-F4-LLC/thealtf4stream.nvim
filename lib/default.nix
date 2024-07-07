@@ -57,7 +57,6 @@ in rec {
 
     # extras
     CopilotChat-nvim
-    vimPlugins.ChatGPT-nvim
     vimPlugins.comment-nvim
     vimPlugins.copilot-lua
     vimPlugins.gitsigns-nvim

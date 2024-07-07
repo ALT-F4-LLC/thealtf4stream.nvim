@@ -137,7 +137,6 @@ Completion plugins that provide LLM driven support for various languages and sit
 | Plugin Name        | Plugin URL                                                  |
 |--------------------|-------------------------------------------------------------|
 | `CopilotChat-nvim` | [CopilotChat.nvim](https://github.com/github/copilot.vim)   |
-| `ChatGPT-nvim`     | [ChatGPT.nvim](https://github.com/jackMort/ChatGPT.nvim)    |
 
 ### Extras
 
@@ -213,7 +212,6 @@ return require('packer').startup(function(use)
 
   -- Completion
   use 'github/copilot.vim'
-  use 'jackMort/ChatGPT.nvim'
 
   -- Extras
   use 'numToStr/Comment.nvim'
