@@ -114,9 +114,6 @@ in rec {
     pkgs.rustfmt
     pkgs.terraform
     python3Packages.black
-
-    # secrets
-    pkgs.doppler
   ];
 
   mkExtraConfig = ''

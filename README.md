@@ -10,7 +10,6 @@ Neovim configuration and examples for TheAltF4Stream.
 - [Dependencies](#dependencies)
     - [Language Servers](#language-servers)
     - [Formatters](#formatters)
-    - [Secrets](#secrets)
 - [Plugins](#plugins)
     - [Environment](#environment)
     - [Languages](#languages)
@@ -70,14 +69,6 @@ These formatters ensure code consistency and style compliance by automatically f
 | `golines`        | [golines](https://github.com/segmentio/golines)            |
 | `rustfmt`        | [rustfmt](https://github.com/rust-lang/rustfmt)            |
 | `terraform`      | [terraform](https://github.com/hashicorp/terraform)        |
-
-### Secrets
-
-These tools help manage and secure secrets within development and deployment environments.
-
-| Dependency Name | Dependency URL                              |
-|-----------------|---------------------------------------------|
-| `doppler`       | [doppler](https://github.com/DopplerHQ/cli) |
 
 ## Plugins
 
