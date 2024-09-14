@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "amber-vim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719527980,
-        "narHash": "sha256-+1W5PBtmdzGEXidRSy0Oq+8L1CmtzlZVdmwIaf3+ZKU=",
-        "owner": "gbhorwood",
-        "repo": "amber.vim",
-        "rev": "331cbd2d00fd5c89581d84f1b72117874716570f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "gbhorwood",
-        "repo": "amber.vim",
-        "type": "github"
-      }
-    },
     "copilotchat": {
       "flake": false,
       "locked": {
@@ -81,7 +65,6 @@
     },
     "root": {
       "inputs": {
-        "amber-vim": "amber-vim",
         "copilotchat": "copilotchat",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs"
