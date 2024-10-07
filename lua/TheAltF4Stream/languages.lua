@@ -105,6 +105,7 @@ local function init()
                 },
             }
         },
+        dhall_lsp_server = {},
         dockerls = {},
         gopls = {
             settings = {

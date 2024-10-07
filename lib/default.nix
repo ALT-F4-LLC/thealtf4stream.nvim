@@ -38,6 +38,7 @@ in rec {
     TheAltF4Stream-nvim = mkVimPlugin {inherit system;};
   in [
     # languages
+    vimPlugins.dhall-vim
     vimPlugins.nvim-lspconfig
     vimPlugins.nvim-treesitter.withAllGrammars
     vimPlugins.rust-tools-nvim
@@ -94,6 +95,7 @@ in rec {
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
     pkgs.cuelsp
+    pkgs.dhall-lsp-server
     pkgs.gopls
     pkgs.haskell-language-server
     pkgs.jsonnet-language-server
