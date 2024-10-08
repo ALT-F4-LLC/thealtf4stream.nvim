@@ -96,7 +96,6 @@ in rec {
     pkgs.cuelsp
     pkgs.dhall-lsp-server
     pkgs.gopls
-    pkgs.haskell-language-server
     pkgs.jsonnet-language-server
     pkgs.lua-language-server
     pkgs.nil
