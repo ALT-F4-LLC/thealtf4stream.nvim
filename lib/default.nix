@@ -91,7 +91,6 @@ in rec {
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
-    ocamlPackages.dune_3
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocamlformat
     pkgs.cuelsp
