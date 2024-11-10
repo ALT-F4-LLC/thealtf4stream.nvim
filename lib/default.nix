@@ -38,7 +38,6 @@ in rec {
     TheAltF4Stream-nvim = mkVimPlugin {inherit system;};
   in [
     # languages
-    vimPlugins.dhall-vim
     vimPlugins.nvim-lspconfig
     vimPlugins.nvim-treesitter.withAllGrammars
     vimPlugins.rust-tools-nvim
@@ -68,7 +67,6 @@ in rec {
     vimPlugins.nvim-notify
     vimPlugins.nvim-treesitter-context
     vimPlugins.nvim-web-devicons
-    vimPlugins.omnisharp-extended-lsp-nvim
     vimPlugins.rainbow-delimiters-nvim
     vimPlugins.trouble-nvim
 
@@ -77,7 +75,7 @@ in rec {
   ];
 
   mkExtraPackages = {system}: let
-    inherit (pkgs) nodePackages ocamlPackages python3Packages;
+    inherit (pkgs) nodePackages python3Packages;
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -87,32 +85,20 @@ in rec {
     nodePackages.bash-language-server
     nodePackages.diagnostic-languageserver
     nodePackages.dockerfile-language-server-nodejs
-    nodePackages.typescript
-    nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
-    ocamlPackages.ocaml-lsp
-    ocamlPackages.ocamlformat
-    pkgs.cuelsp
-    pkgs.dhall-lsp-server
     pkgs.gopls
     pkgs.jsonnet-language-server
     pkgs.lua-language-server
     pkgs.nil
-    pkgs.nls
-    pkgs.omnisharp-roslyn
-    pkgs.postgres-lsp
     pkgs.pyright
     pkgs.rust-analyzer
-    pkgs.terraform-ls
-    pkgs.zls
 
     # formatters
     pkgs.alejandra
     pkgs.gofumpt
     pkgs.golines
     pkgs.rustfmt
-    pkgs.terraform
     python3Packages.black
   ];
 

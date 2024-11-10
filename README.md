@@ -31,31 +31,16 @@ These language servers provide support for various programming languages, offeri
 | Dependency Name                     | Dependency URL                                                                                         |
 |-------------------------------------|--------------------------------------------------------------------------------------------------------|
 | `bash-language-server`              | [bash-language-server](https://github.com/bash-lsp/bash-language-server)                               |
-| `cuelsp`                            | [cuelsp](https://github.com/cuelang/cuelsp)                                                            |
-| `dhall-lsp-server`                  | [dhall-lsp-server](https://github.com/dhall-lang/dhall-haskell/tree/master/dhall-lsp-server)           |
 | `diagnostic-languageserver`         | [diagnostic-languageserver](https://github.com/iamcco/diagnostic-languageserver)                       |
 | `dockerfile-language-server-nodejs` | [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs)      |
-| `dune`                              | [dune](https://github.com/ocaml/dune)                                                                  |
-| `gleam`                             | [gleam](https://github.com/gleam-lang/gleam)                                                           |
 | `gopls`                             | [gopls](https://github.com/golang/tools/tree/master/gopls)                                             |
-| `haskell-language-server`           | [haskell-language-server](https://github.com/haskell/haskell-language-server)                          |
 | `jsonnet-language-server`           | [jsonnet-language-server](https://github.com/jdbaldry/jsonnet-language-server)                         |
 | `lua-language-server`               | [lua-language-server](https://github.com/sumneko/lua-language-server)                                  |
-| `nil`                               | [nil](https://github.com/NixOS/nixtree/master/development/tools/misc/nil)                              |
-| `nls`                               | [nls](https://github.com/nix-community/nix-lsp)                                                        |
-| `ocaml-lsp`                         | [ocaml-lsp](https://github.com/ocaml/ocaml-lsp)                                                        |
-| `ocamlformat`                       | [ocamlformat](https://github.com/ocaml-ppx/ocamlformat)                                                |
-| `omnisharp-roslyn`                  | [omnisharp-roslyn](https://github.com/OmniSharp/omnisharp-roslyn)                                      |
-| `postgres-lsp`                      | [postgres-lsp](https://github.com/darold/postgresql-lsp)                                               |
+| `nil`                               | [nil](https://github.com/oxalica/nil)                              |
 | `pyright`                           | [pyright](https://github.com/microsoft/pyright)                                                        |
 | `rust-analyzer`                     | [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer)                                        |
-| `sourcekit-lsp`                     | [sourcekit-lsp](https://github.com/apple/sourcekit-lsp)                                                |
-| `terraform-ls`                      | [terraform-ls](https://github.com/hashicorp/terraform-ls)                                              |
-| `typescript-language-server`        | [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server) |
-| `typescript`                        | [typescript](https://github.com/microsoft/TypeScript)                                                  |
 | `vscode-langservers-extracted`      | [vscode-langservers-extracted](https://github.com/hrsh7th/vscode-langservers-extracted)                |
 | `yaml-language-server`              | [yaml-language-server](https://github.com/redhat-developer/yaml-language-server)                       |
-| `zls`                               | [zls](https://github.com/zigtools/zls)                                                                 |
 
 ### Formatters
 
@@ -63,12 +48,11 @@ These formatters ensure code consistency and style compliance by automatically f
 
 | Dependency Name  | Dependency URL                                             |
 |------------------|------------------------------------------------------------|
-| `alejandra`      | [alejandra](https://github.com/kirelagin/alejandra)        |
+| `alejandra`      | [alejandra](https://github.com/kamadorueda/alejandra)        |
 | `black`          | [black](https://github.com/psf/black)                      |
 | `gofumpt`        | [gofumpt](https://github.com/mvdan/gofumpt)                |
 | `golines`        | [golines](https://github.com/segmentio/golines)            |
 | `rustfmt`        | [rustfmt](https://github.com/rust-lang/rustfmt)            |
-| `terraform`      | [terraform](https://github.com/hashicorp/terraform)        |
 
 ## Plugins
 
@@ -145,7 +129,6 @@ Extra plugins that provide functionalities such as Git integration, status lines
 | `nvim-notify`                 | [nvim-notify](https://github.com/rcarriga/nvim-notify)                                |
 | `nvim-treesitter-context`     | [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context) |
 | `nvim-web-devicons`           | [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)                  |
-| `omnisharp-extended-lsp-nvim` | [omnisharp-extended-lsp.nvim](https://github.com/Hoffs/omnisharp-extended-lsp.nvim)   |
 | `rainbow-delimiters-nvim`     | [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)         |
 | `trouble-nvim`                | [trouble.nvim](https://github.com/folke/trouble.nvim)                                 |
 
@@ -215,7 +198,6 @@ return require('packer').startup(function(use)
   use 'rcarriga/nvim-notify'
   use 'nvim-treesitter/nvim-treesitter-context'
   use 'kyazdani42/nvim-web-devicons'
-  use 'Hoffs/omnisharp-extended-lsp.nvim'
   use 'HiPhish/rainbow-delimiters.nvim'
   use 'folke/trouble.nvim'
 
