@@ -152,7 +152,7 @@ local function init()
                 },
             },
         },
-        zls = {},
+        -- zls = {},
     }
 
     -- Initialize servers

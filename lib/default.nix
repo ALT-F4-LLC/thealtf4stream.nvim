@@ -104,7 +104,7 @@ in rec {
     pkgs.pyright
     pkgs.rust-analyzer
     pkgs.terraform-ls
-    pkgs.zls
+    # pkgs.zls
 
     # formatters
     pkgs.alejandra
