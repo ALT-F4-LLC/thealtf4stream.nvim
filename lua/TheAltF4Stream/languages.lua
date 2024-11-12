@@ -86,24 +86,6 @@ local function init()
     local language_servers = {
         bashls = {},
         cssls = {},
-        diagnosticls = {
-            filetypes = { "python" },
-            init_options = {
-                filetypes = {
-                    python = "black"
-                },
-                formatFiletypes = {
-                    python = { "black" }
-                },
-                formatters = {
-                    black = {
-                        command = "black",
-                        args = { "--quiet", "-" },
-                        rootPatterns = { "pyproject.toml" },
-                    },
-                },
-            }
-        },
         dhall_lsp_server = {},
         dockerls = {},
         gopls = {
