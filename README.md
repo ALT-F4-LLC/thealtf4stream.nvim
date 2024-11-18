@@ -77,7 +77,6 @@ Language plugins that provide enhancements such as syntax highlighting, LSP conf
 | `nvim-treesitter.withAllGrammars`  | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) |
 | `rust-tools-nvim`                  | [rust-tools.nvim](https://github.com/simrat39/rust-tools.nvim)        |
 | `vim-just`                         | [vim-just](https://github.com/NoahTheDuke/vim-just)                   |
-| `vim-nickel`                       | [vim-nickel](https://github.com/nickel-lang/vim-nickel)               |
 | `zig-vim`                          | [zig.vim](https://github.com/ziglang/zig.vim)                         |
 
 ### Navigation
@@ -171,7 +170,6 @@ return require('packer').startup(function(use)
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'simrat39/rust-tools.nvim'
   use 'NoahTheDuke/vim-just'
-  use 'nickel-lang/vim-nickel'
   use 'ziglang/zig.vim'
 
   -- Navigation

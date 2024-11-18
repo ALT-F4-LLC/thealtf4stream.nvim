@@ -42,7 +42,6 @@ in rec {
     vimPlugins.nvim-treesitter.withAllGrammars
     vimPlugins.rust-tools-nvim
     vimPlugins.vim-just
-    vimPlugins.vim-nickel
     vimPlugins.zig-vim
 
     # telescope
