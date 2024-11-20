@@ -69,6 +69,7 @@ local function set_vim_keymaps()
             vim.highlight.on_yank()
     end,
     })
+    vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
 
 end
 

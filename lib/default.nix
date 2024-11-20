@@ -69,6 +69,7 @@ in rec {
     vimPlugins.rainbow-delimiters-nvim
     vimPlugins.trouble-nvim
     vimPlugins.which-key-nvim
+    vimPlugins.undotree
 
     # configuration
     TheAltF4Stream-nvim
