@@ -36,10 +36,10 @@ local function init()
     vim.keymap.set('n', '<leader>fr', '<CMD>lua require("telescope.builtin").registers()<CR>', options)
 
     -- Language Servers
-    vim.keymap.set('n', '<leader>lsd', '<CMD>lua require("telescope.builtin").lsp_definitions{}<CR>', options)
-    vim.keymap.set('n', '<leader>lsi', '<CMD>lua require("telescope.builtin").lsp_implementations{}<CR>', options)
-    vim.keymap.set('n', '<leader>lsl', '<CMD>lua require("telescope.builtin").lsp_code_actions{}<CR>', options)
-    vim.keymap.set('n', '<leader>lst', '<CMD>lua require("telescope.builtin").lsp_type_definitions{}<CR>', options)
+    vim.keymap.set('n', 'gd', '<CMD>lua require("telescope.builtin").lsp_definitions{}<CR>', options)
+    vim.keymap.set('n', 'gr', '<CMD>lua require("telescope.builtin").lsp_references{}<CR>', options)
+    vim.keymap.set('n', 'gi', '<CMD>lua require("telescope.builtin").lsp_implementations{}<CR>', options)
+    vim.keymap.set('n', '<leader>D', '<CMD>lua require("telescope.builtin").lsp_type_definitions{}<CR>', options)
 
     -- Extensions
     vim.keymap.set('n', '<leader>fn', '<CMD>lua require("telescope").extensions.notify.notify()<CR>', options)

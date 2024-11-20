@@ -68,6 +68,7 @@ in rec {
     vimPlugins.nvim-web-devicons
     vimPlugins.rainbow-delimiters-nvim
     vimPlugins.trouble-nvim
+    vimPlugins.which-key-nvim
 
     # configuration
     TheAltF4Stream-nvim

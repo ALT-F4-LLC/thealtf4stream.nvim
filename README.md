@@ -121,6 +121,8 @@ Extra plugins that provide functionalities such as Git integration, status lines
 | `comment-nvim`                | [comment.nvim](https://github.com/numToStr/Comment.nvim)                              |
 | `copilot-lua`                 | [copilot.lua](https://github.com/zbirenbaum/copilot.lua)                              |
 | `gitsigns-nvim`               | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)                           |
+## TODO probably would be nice to add neogit/lazygit/fugitive
+see https://youtu.be/K-FKqXj8BAQ?si=JBKaGTZZo_w_oA-P
 | `lualine-nvim`                | [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)                          |
 | `noice-nvim`                  | [noice.nvim](https://github.com/folke/noice.nvim)                                     |
 | `nui-nvim`                    | [nui.nvim](https://github.com/MunifTanjim/nui.nvim)                                   |
