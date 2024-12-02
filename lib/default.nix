@@ -77,7 +77,7 @@ in rec {
   ];
 
   mkExtraPackages = {system}: let
-    inherit (pkgs) nodePackages ocamlPackages python3Packages;
+    inherit (pkgs) nodePackages python3Packages;
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -90,8 +90,6 @@ in rec {
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
-    ocamlPackages.ocaml-lsp
-    ocamlPackages.ocamlformat
     pkgs.cuelsp
     pkgs.dhall-lsp-server
     pkgs.gopls
@@ -102,15 +100,12 @@ in rec {
     pkgs.omnisharp-roslyn
     pkgs.postgres-lsp
     pkgs.pyright
-    pkgs.rust-analyzer
     pkgs.terraform-ls
-    # pkgs.zls
 
     # formatters
     pkgs.alejandra
     pkgs.gofumpt
     pkgs.golines
-    pkgs.rustfmt
     pkgs.terraform
     python3Packages.black
   ];
