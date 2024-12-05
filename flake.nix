@@ -3,7 +3,7 @@
 
   inputs = {
     copilotchat.flake = false;
-    copilotchat.url = "github:CopilotC-Nvim/CopilotChat.nvim?ref=canary";
+    copilotchat.url = "github:CopilotC-Nvim/CopilotChat.nvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
