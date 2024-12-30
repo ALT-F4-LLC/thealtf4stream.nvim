@@ -70,6 +70,7 @@ in rec {
     vimPlugins.trouble-nvim
     vimPlugins.which-key-nvim
     vimPlugins.undotree
+    vimPlugins.obsidian-nvim
 
     # configuration
     TheAltF4Stream-nvim
