@@ -70,7 +70,9 @@ in rec {
     vimPlugins.trouble-nvim
     vimPlugins.which-key-nvim
     vimPlugins.undotree
+
     vimPlugins.obsidian-nvim
+    vimPlugins.nvim-cmp # required for obsidian (completion)
 
     # configuration
     TheAltF4Stream-nvim
