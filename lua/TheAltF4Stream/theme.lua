@@ -4,6 +4,7 @@ local gitsigns = require 'gitsigns'
 local lualine = require 'lualine'
 local noice = require 'noice'
 local notify = require 'notify'
+local render_markdown = require 'render-markdown'
 local tokyonight = require 'tokyonight'
 
 local function init()
@@ -12,6 +13,8 @@ local function init()
     comment.setup {}
 
     gitsigns.setup {}
+
+    render_markdown.setup {}
 
     lualine.setup {
         options = {

@@ -4,7 +4,7 @@ local function init()
     require 'TheAltF4Stream.languages'.init()
     require 'TheAltF4Stream.telescope'.init()
     require 'TheAltF4Stream.floaterm'.init()
-    require 'TheAltF4Stream.copilot'.init()
+    require 'TheAltF4Stream.assistant'.init()
 end
 
 return {

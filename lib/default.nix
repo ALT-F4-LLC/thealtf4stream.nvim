@@ -1,23 +1,46 @@
 {inputs}: let
   inherit (inputs.nixpkgs) legacyPackages;
 in rec {
-  mkCopilotChat = {system}: let
-    inherit (pkgs) vimUtils;
-    inherit (vimUtils) buildVimPlugin;
-    pkgs = legacyPackages.${system};
-  in
-    buildVimPlugin {
-      name = "CopilotChat";
-      src = inputs.copilotchat;
-    };
-
   mkVimPlugin = {system}: let
     inherit (pkgs) vimUtils;
     inherit (vimUtils) buildVimPlugin;
     pkgs = legacyPackages.${system};
   in
     buildVimPlugin {
+      buildInputs = with pkgs; [doppler nodejs];
+
+      dependencies = with pkgs.vimPlugins; [
+        # theme
+        tokyonight-nvim
+
+        # languages
+        nvim-lspconfig
+        nvim-treesitter.withAllGrammars
+        rust-tools-nvim
+
+        # navigation
+        plenary-nvim
+        telescope-nvim
+
+        # code assist
+        avante-nvim
+        copilot-lua
+        dressing-nvim
+        nui-nvim
+
+        # extras
+        comment-nvim
+        gitsigns-nvim
+        lualine-nvim
+        noice-nvim
+        nvim-colorizer-lua
+        nvim-notify
+        nvim-treesitter-context
+        render-markdown-nvim
+      ];
+
       name = "TheAltF4Stream";
+
       postInstall = ''
         rm -rf $out/.envrc
         rm -rf $out/.gitignore
@@ -28,53 +51,33 @@ in rec {
         rm -rf $out/justfile
         rm -rf $out/lib
       '';
+
       src = ../.;
     };
 
   mkNeovimPlugins = {system}: let
     inherit (pkgs) vimPlugins;
-    CopilotChat-nvim = mkCopilotChat {inherit system;};
     pkgs = legacyPackages.${system};
-    TheAltF4Stream-nvim = mkVimPlugin {inherit system;};
-  in [
-    # languages
-    vimPlugins.dhall-vim
-    vimPlugins.nvim-lspconfig
-    vimPlugins.nvim-treesitter.withAllGrammars
-    vimPlugins.rust-tools-nvim
-    vimPlugins.vim-just
-    vimPlugins.vim-nickel
-    vimPlugins.zig-vim
+    thealtf4stream-nvim = mkVimPlugin {inherit system;};
+  in
+    with vimPlugins; [
+      # languages
+      vim-just
+      zig-vim
 
-    # telescope
-    vimPlugins.plenary-nvim
-    vimPlugins.telescope-nvim
+      # floaterm
+      vim-floaterm
 
-    # theme
-    vimPlugins.tokyonight-nvim
+      # extras
+      image-nvim
+      nvim-colorizer-lua
+      nvim-web-devicons
+      rainbow-delimiters-nvim
+      trouble-nvim
 
-    # floaterm
-    vimPlugins.vim-floaterm
-
-    # extras
-    CopilotChat-nvim
-    vimPlugins.comment-nvim
-    vimPlugins.copilot-lua
-    vimPlugins.gitsigns-nvim
-    vimPlugins.lualine-nvim
-    vimPlugins.noice-nvim
-    vimPlugins.nui-nvim
-    vimPlugins.nvim-colorizer-lua
-    vimPlugins.nvim-notify
-    vimPlugins.nvim-treesitter-context
-    vimPlugins.nvim-web-devicons
-    vimPlugins.omnisharp-extended-lsp-nvim
-    vimPlugins.rainbow-delimiters-nvim
-    vimPlugins.trouble-nvim
-
-    # configuration
-    TheAltF4Stream-nvim
-  ];
+      # configuration
+      thealtf4stream-nvim
+    ];
 
   mkExtraPackages = {system}: let
     inherit (pkgs) nodePackages python3Packages;
@@ -97,7 +100,6 @@ in rec {
     pkgs.lua-language-server
     pkgs.nil
     pkgs.nls
-    pkgs.omnisharp-roslyn
     pkgs.postgres-lsp
     pkgs.pyright
     pkgs.terraform-ls
@@ -108,6 +110,9 @@ in rec {
     pkgs.golines
     pkgs.terraform
     python3Packages.black
+
+    # others
+    pkgs.imagemagick
   ];
 
   mkExtraConfig = ''
@@ -136,9 +141,11 @@ in rec {
   mkHomeManager = {system}: let
     extraConfig = mkExtraConfig;
     extraPackages = mkExtraPackages {inherit system;};
+    pkgs = legacyPackages.${system};
     plugins = mkNeovimPlugins {inherit system;};
   in {
     inherit extraConfig extraPackages plugins;
+    extraLuaPackages = [pkgs.magick];
     defaultEditor = true;
     enable = true;
     withNodeJs = true;

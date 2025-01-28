@@ -1,54 +1,34 @@
 {
   description = "Neovim configuration for TheAltF4Stream.";
 
-  inputs = {
-    copilotchat.flake = false;
-    copilotchat.url = "github:CopilotC-Nvim/CopilotChat.nvim";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = inputs @ {
+  outputs = {
     self,
-    flake-parts,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      debug = true;
+    nixpkgs,
+  }: let
+    forAllSystems = nixpkgs.lib.genAttrs ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
+  in {
+    lib = import ./lib {inputs = self.inputs;};
 
-      flake = {
-        lib = import ./lib {inherit inputs;};
+    packages = forAllSystems (system: {
+      default = self.lib.mkVimPlugin {inherit system;};
+      neovim = self.lib.mkNeovim {inherit system;};
+    });
+
+    apps = forAllSystems (system: {
+      nvim = {
+        program = "${self.packages.${system}.neovim}/bin/nvim";
+        type = "app";
       };
+    });
 
-      systems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
-
-      perSystem = {
-        config,
-        pkgs,
-        system,
-        ...
-      }: let
-        inherit (pkgs) alejandra just mkShell;
-      in {
-        apps = {
-          nvim = {
-            program = "${config.packages.neovim}/bin/nvim";
-            type = "app";
-          };
-        };
-
-        devShells = {
-          default = mkShell {
-            buildInputs = [just];
-          };
-        };
-
-        formatter = alejandra;
-
-        packages = {
-          default = self.lib.mkVimPlugin {inherit system;};
-          neovim = self.lib.mkNeovim {inherit system;};
-        };
+    devShells = forAllSystems (system: {
+      default = nixpkgs.legacyPackages.${system}.mkShell {
+        buildInputs = [nixpkgs.legacyPackages.${system}.just];
       };
-    };
+    });
+
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  };
 }

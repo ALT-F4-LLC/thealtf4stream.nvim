@@ -37,6 +37,7 @@ local function set_vim_wo()
 end
 
 local function set_vim_opt()
+    vim.opt.laststatus = 3
     vim.opt.list = true
     vim.opt.listchars:append "eol:↴"
 end

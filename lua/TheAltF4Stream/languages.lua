@@ -1,6 +1,4 @@
-local copilot = require 'copilot'
 local lspconfig = require 'lspconfig'
-local omnisharp_extended = require 'omnisharp_extended'
 local rust_tools = require 'rust-tools'
 local treesitter = require 'nvim-treesitter.configs'
 local treesitter_context = require 'treesitter-context'
@@ -53,13 +51,6 @@ local function on_attach(client, buffer)
 end
 
 local function init()
-    -- Copilot setup
-    copilot.setup {
-        suggestion = {
-            auto_trigger = true,
-        }
-    }
-
     -- Rust specific setup
     rust_tools.setup {
         server = {
@@ -125,12 +116,6 @@ local function init()
             }
         },
         ocamllsp = {},
-        omnisharp = {
-            cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-            handlers = {
-                ["textDocument/definition"] = omnisharp_extended.handler,
-            },
-        },
         postgres_lsp = {},
         pyright = {
             settings = {
