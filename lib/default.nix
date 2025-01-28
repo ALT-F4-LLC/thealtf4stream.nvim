@@ -141,13 +141,12 @@ in rec {
   mkHomeManager = {system}: let
     extraConfig = mkExtraConfig;
     extraPackages = mkExtraPackages {inherit system;};
-    pkgs = legacyPackages.${system};
     plugins = mkNeovimPlugins {inherit system;};
   in {
     inherit extraConfig extraPackages plugins;
-    extraLuaPackages = [pkgs.magick];
     defaultEditor = true;
     enable = true;
+    extraLuaPackages = ps: [ps.magick];
     withNodeJs = true;
     withPython3 = true;
     withRuby = true;
