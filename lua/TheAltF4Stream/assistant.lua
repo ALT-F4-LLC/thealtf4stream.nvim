@@ -15,13 +15,11 @@ local function init()
 
     avante.setup({
         provider = "claude",
-        claude = {
-            api_key_name = { "doppler", "secrets", "get", "--plain", "ANTHROPIC_API_KEY" },
-            model = "claude-3-7-sonnet-20250219",
-        },
-        openai = {
-            api_key_name = { "doppler", "secrets", "get", "--plain", "OPENAI_API_KEY" },
-            model = "o3-mini",
+        providers = {
+            claude = {
+                api_key_name = { "doppler", "secrets", "get", "--plain", "ANTHROPIC_API_KEY" },
+                model = "claude-sonnet-4-20250514",
+            },
         },
     })
 end

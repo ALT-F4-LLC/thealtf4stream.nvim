@@ -53,6 +53,10 @@ in rec {
       '';
 
       src = ../.;
+
+      nvimSkipModules = [
+        "init"
+      ];
     };
 
   mkNeovimPlugins = {system}: let
