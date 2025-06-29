@@ -1,11 +1,15 @@
 {
   description = "Neovim configuration for TheAltF4Stream.";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    notion-nvim.url = "github:ALT-F4-LLC/notion.nvim";
+  };
 
   outputs = {
     self,
     nixpkgs,
+    notion-nvim,
   }: let
     forAllSystems = nixpkgs.lib.genAttrs ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
   in {
