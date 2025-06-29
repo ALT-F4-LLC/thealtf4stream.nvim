@@ -4,6 +4,7 @@ in rec {
   mkVimPlugin = {system}: let
     inherit (pkgs) vimUtils;
     inherit (vimUtils) buildVimPlugin;
+    notion-nvim = inputs.notion-nvim.packages.${system}.default;
     pkgs = legacyPackages.${system};
   in
     buildVimPlugin {
@@ -33,6 +34,7 @@ in rec {
         gitsigns-nvim
         lualine-nvim
         noice-nvim
+        notion-nvim
         nvim-colorizer-lua
         nvim-notify
         nvim-treesitter-context
