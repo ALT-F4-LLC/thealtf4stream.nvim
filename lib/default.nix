@@ -9,6 +9,8 @@ in rec {
   in
     buildVimPlugin {
       buildInputs = with pkgs; [doppler nodejs];
+      name = "TheAltF4Stream";
+      src = ../.;
 
       dependencies = with pkgs.vimPlugins; [
         # theme
@@ -24,7 +26,6 @@ in rec {
         telescope-nvim
 
         # code assist
-        avante-nvim
         copilot-lua
         dressing-nvim
         nui-nvim
@@ -41,7 +42,9 @@ in rec {
         render-markdown-nvim
       ];
 
-      name = "TheAltF4Stream";
+      nvimSkipModules = [
+        "init"
+      ];
 
       postInstall = ''
         rm -rf $out/.envrc
@@ -53,12 +56,6 @@ in rec {
         rm -rf $out/justfile
         rm -rf $out/lib
       '';
-
-      src = ../.;
-
-      nvimSkipModules = [
-        "init"
-      ];
     };
 
   mkNeovimPlugins = {system}: let
