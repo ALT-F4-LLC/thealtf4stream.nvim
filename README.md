@@ -33,7 +33,6 @@ These language servers provide support for various programming languages, offeri
 | `bash-language-server`              | [bash-language-server](https://github.com/bash-lsp/bash-language-server)                               |
 | `diagnostic-languageserver`         | [diagnostic-languageserver](https://github.com/iamcco/diagnostic-languageserver)                       |
 | `dockerfile-language-server-nodejs` | [dockerfile-language-server-nodejs](https://github.com/rcjsuen/dockerfile-language-server-nodejs)      |
-| `gopls`                             | [gopls](https://github.com/golang/tools/tree/master/gopls)                                             |
 | `jsonnet-language-server`           | [jsonnet-language-server](https://github.com/jdbaldry/jsonnet-language-server)                         |
 | `lua-language-server`               | [lua-language-server](https://github.com/sumneko/lua-language-server)                                  |
 | `nil`                               | [nil](https://github.com/oxalica/nil)                              |

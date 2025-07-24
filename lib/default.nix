@@ -91,7 +91,6 @@ in rec {
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
-    pkgs.gopls
     pkgs.jsonnet-language-server
     pkgs.lua-language-server
     pkgs.nil

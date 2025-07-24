@@ -104,13 +104,6 @@ local function init()
             }
         },
         dockerls = {},
-        gopls = {
-            settings = {
-                gopls = {
-                    gofumpt = true,
-                },
-            },
-        },
         html = {},
         jsonls = {},
         jsonnet_ls = {},
