@@ -44,6 +44,7 @@ in rec {
 
       nvimSkipModules = [
         "init"
+        "notify.integrations.fzf"
       ];
 
       postInstall = ''
