@@ -1,4 +1,3 @@
-local lspconfig = require 'lspconfig'
 local treesitter = require 'nvim-treesitter.configs'
 local treesitter_context = require 'treesitter-context'
 
@@ -155,7 +154,8 @@ local function init()
             end
         end
 
-        lspconfig[server].setup(config)
+        vim.lsp.enable(server)
+        vim.lsp.config(server, config)
     end
 
     -- Global mappings.

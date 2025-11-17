@@ -104,6 +104,7 @@ in rec {
     pkgs.lua-language-server
     pkgs.nil
     pkgs.nls
+    pkgs.ocamlPackages.ocaml-lsp
     pkgs.postgres-language-server
     pkgs.pyright
     pkgs.terraform-ls
