@@ -1,5 +1,4 @@
 local lspconfig = require 'lspconfig'
-local rust_tools = require 'rust-tools'
 local treesitter = require 'nvim-treesitter.configs'
 local treesitter_context = require 'treesitter-context'
 
@@ -48,13 +47,18 @@ local function on_attach(client, buffer)
         autocmd { "CursorHold", augroup_highlight, vim.lsp.buf.document_highlight, buffer }
         autocmd { "CursorMoved", augroup_highlight, vim.lsp.buf.clear_references, buffer }
     end
+
+    vim.lsp.inlay_hint.enable(true, { buffer = buffer })
 end
 
 local function init()
-    -- Rust specific setup
-    rust_tools.setup {
+    vim.g.rustaceanvim = {
+        -- DAP configuration
+        dap = {},
+        -- LSP configuration
         server = {
-            settings = {
+            on_attach = on_attach,
+            default_settings = {
                 ['rust-analyzer'] = {
                     cargo = {
                         buildScripts = {
@@ -70,8 +74,9 @@ local function init()
                     },
                 },
             },
-            on_attach = on_attach,
         },
+        -- Plugin configuration
+        tools = {},
     }
 
     local language_servers = {
@@ -156,8 +161,8 @@ local function init()
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+    vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end)
+    vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end)
     vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
     treesitter.setup {

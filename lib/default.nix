@@ -19,7 +19,7 @@ in rec {
         # languages
         nvim-lspconfig
         nvim-treesitter.withAllGrammars
-        rust-tools-nvim
+        rustaceanvim
 
         # navigation
         plenary-nvim
@@ -92,19 +92,19 @@ in rec {
   in [
     # language servers
     nodePackages.bash-language-server
-    nodePackages.dockerfile-language-server-nodejs
     nodePackages.typescript
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
     pkgs.cuelsp
     pkgs.dhall-lsp-server
+    pkgs.dockerfile-language-server
     pkgs.gopls
     pkgs.jsonnet-language-server
     pkgs.lua-language-server
     pkgs.nil
     pkgs.nls
-    pkgs.postgres-lsp
+    pkgs.postgres-language-server
     pkgs.pyright
     pkgs.terraform-ls
 
