@@ -71,11 +71,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1765432642,
-        "narHash": "sha256-KpTxA0PELnAj+ubs7NX6M1+XjhgCgX49hqnQzkTutqo=",
+        "lastModified": 1765442822,
+        "narHash": "sha256-qe+cbGot8xc0NP096BqZ/o+QY+72isl1O2b3Lf9BRGw=",
         "owner": "ALT-F4-LLC",
         "repo": "notion.nvim",
-        "rev": "0daa3198fc74caa577c1e8616382ee359608609b",
+        "rev": "1e7973d718f5ea32da062f7ea50708d2636a8559",
         "type": "github"
       },
       "original": {
