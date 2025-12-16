@@ -113,6 +113,7 @@ in rec {
     pkgs.alejandra
     pkgs.gofumpt
     pkgs.golines
+    pkgs.ocamlPackages.ocamlformat
     pkgs.terraform
     python3Packages.black
 
