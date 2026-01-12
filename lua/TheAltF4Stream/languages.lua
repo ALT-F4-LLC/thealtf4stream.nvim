@@ -1,4 +1,4 @@
-local treesitter = require 'nvim-treesitter.configs'
+local treesitter = require 'nvim-treesitter'
 local treesitter_context = require 'treesitter-context'
 
 local function autocmd(args)

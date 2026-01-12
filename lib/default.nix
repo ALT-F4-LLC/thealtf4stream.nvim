@@ -31,6 +31,7 @@ in rec {
         nui-nvim
 
         # extras
+        claude-code-nvim
         comment-nvim
         gitsigns-nvim
         lualine-nvim
@@ -39,7 +40,9 @@ in rec {
         nvim-colorizer-lua
         nvim-notify
         nvim-treesitter-context
+        opencode-nvim
         render-markdown-nvim
+        snacks-nvim
       ];
 
       nvimSkipModules = [
