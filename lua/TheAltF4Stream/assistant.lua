@@ -19,7 +19,11 @@ local function init()
         }
     }
 
+    -- Claude Code
+
     vim.keymap.set('n', '<leader>CC', '<cmd>ClaudeCode<CR>', { desc = 'Toggle Claude Code' })
+
+    -- Opencode
 
     vim.keymap.set({ "n", "x" }, "<C-a>", function() opencode.ask("@this: ", { submit = true }) end,
         { desc = "Ask opencode" })
@@ -41,8 +45,8 @@ local function init()
     vim.keymap.set("n", "<S-C-d>", function() opencode.command("session.half.page.down") end,
         { desc = "opencode half page down" })
 
-    -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
     vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true })
+
     vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
 end
 
