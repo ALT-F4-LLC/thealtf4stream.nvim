@@ -94,11 +94,7 @@ in rec {
     };
   in [
     # language servers
-    nodePackages.bash-language-server
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
+    pkgs.bash-language-server
     pkgs.cuelsp
     pkgs.dhall-lsp-server
     pkgs.dockerfile-language-server
@@ -111,6 +107,10 @@ in rec {
     pkgs.postgres-language-server
     pkgs.pyright
     pkgs.terraform-ls
+    pkgs.typescript
+    pkgs.typescript-language-server
+    pkgs.vscode-langservers-extracted
+    pkgs.yaml-language-server
 
     # formatters
     pkgs.alejandra
