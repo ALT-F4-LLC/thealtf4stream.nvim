@@ -43,9 +43,16 @@ return {
             end
         },
         config = function(_, opts)
-            require('tokyonight').setup(opts)
+            local tokyonight = require('tokyonight')
 
-            vim.cmd([[colorscheme tokyonight-night]])
+            tokyonight.setup(opts)
+
+            -- Dark falls back to moon when Neovim starts in light mode, so
+            -- record the configured style as the dark variant.
+            tokyonight.styles.dark = opts.style
+
+            -- Follows 'background', which Neovim sets from the terminal.
+            vim.cmd([[colorscheme tokyonight]])
         end,
         init = function()
             local settings_o = {

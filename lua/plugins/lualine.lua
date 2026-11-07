@@ -3,7 +3,7 @@ return {
     opts = {
         options = {
             extensions = { 'fzf', 'quickfix' },
-            theme = 'tokyonight',
+            theme = 'auto',
         },
     },
     config = function(_, opts)
